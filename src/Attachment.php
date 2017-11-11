@@ -9,7 +9,6 @@ use Codesleeve\Stapler\Interfaces\Storage as StorageInterface;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\Factories\File as FileFactory;
 use JsonSerializable;
-use DateTime;
 
 class Attachment implements AttachmentInterface, JsonSerializable
 {
@@ -132,7 +131,7 @@ class Attachment implements AttachmentInterface, JsonSerializable
         $this->instanceWrite('file_name', $this->uploadedFile->getFilename());
         $this->instanceWrite('file_size', $this->uploadedFile->getSize());
         $this->instanceWrite('content_type', $this->uploadedFile->getMimeType());
-        $this->instanceWrite('updated_at', new DateTime);
+        $this->instanceWrite('updated_at', time());
         $this->queueAllForWrite();
     }
 
