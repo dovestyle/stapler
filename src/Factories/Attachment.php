@@ -16,7 +16,7 @@ class Attachment
      *
      * @return \Codesleeve\Stapler\Attachment
      */
-    public static function create($name, array $options)
+    public static function create($name, array $options, $instance = null)
     {
         $options = static::mergeOptions($options);
         Stapler::getValidatorInstance()->validateOptions($options);
@@ -24,6 +24,7 @@ class Attachment
 
         $className = Stapler::getConfigInstance()->get('bindings.attachment');
         $attachment = new $className($config, $interpolator, $resizer);
+        if (!empty($instance)) { $attachment->setInstance($instance); }
 
         $storageDriver = StorageFactory::create($attachment);
         $attachment->setStorageDriver($storageDriver);
