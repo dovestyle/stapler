@@ -118,6 +118,16 @@ class S3 implements StorageInterface
     }
 
     /**
+     * Return S3 API client
+     *
+     * @return \Aws\S3\S3Client
+     */
+    public function getS3Client()
+    {
+        return $this->s3Client;
+    }
+
+    /**
      * Ensure that a given S3 bucket exists.
      *
      * @param string $bucketName
